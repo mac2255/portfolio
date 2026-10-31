@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scarlett · 컴포넌트 가이드</title><link rel="stylesheet" href="./components/theme.css"><script type="module" src="./components/index.js"></script></head>
+<body><a href="#main">본문으로 건너뛰기</a><div class="container"><scarlett-header></scarlett-header><main id="main">
+<section class="section"><scarlett-tag>SCARLETT DESIGN SYSTEM</scarlett-tag><h1>자연과 음악을 사랑하는<br>시간 여행자</h1><p class="muted">밝은 민트, 짙은 청록색, 산뜻한 고딕체으로 구성한 재사용 컴포넌트입니다.</p><div class="row"><scarlett-button size="large">기록 둘러보기 · Explore</scarlett-button><scarlett-button variant="secondary">나를 소개해요 · About</scarlett-button></div></section>
+<section class="section panel theme-panel"><h2>About Scarlett · 나를 소개해요</h2><p>안녕하세요, 스칼렛입니다. 자연 속에서 보내는 시간과 음악이 흐르는 순간을 좋아합니다.</p><div class="row"><scarlett-tag>Travel</scarlett-tag><scarlett-tag>Music</scarlett-tag><scarlett-tag>Outdoor</scarlett-tag></div></section>
+<section class="section"><h2>버튼과 상태</h2><div class="row"><scarlett-button>저장 및 공개</scarlett-button><scarlett-button variant="secondary">미리보기</scarlett-button><scarlett-button variant="danger">삭제</scarlett-button><scarlett-button disabled>사용 불가</scarlett-button><scarlett-button loading>저장</scarlett-button></div></section>
+<section class="section" id="records"><h2>순간의 기록</h2><scarlett-filter></scarlett-filter><p id="count" role="status">전체 예시 3개</p><div class="grid"><scarlett-card category="여행" title="바다 곁에서 보낸 느린 하루" summary="파도 소리를 들으며 천천히 걸었던 순간." href="#records"></scarlett-card><scarlett-card category="음악" title="산책길에 함께한 플레이리스트" summary="좋아하는 음악과 함께하는 시간." href="#records"></scarlett-card><scarlett-card category="아웃도어" title="숲길을 따라 걷는 시간" summary="초록이 가득한 길에서 만난 풍경." href="#records"></scarlett-card></div></section>
+<section class="section"><h2>관리자 입력과 알림</h2><div class="grid"><div class="panel"><scarlett-field label="이름 (필수)" value="스칼렛" required maxlength="30" help="30자 이내로 입력해주세요."></scarlett-field><br><scarlett-field label="자기소개 (필수)" multiline maxlength="1000" help="1,000자 이내로 입력해주세요."></scarlett-field></div><div><scarlett-alert>자기소개가 공개되었습니다.</scarlett-alert><br><scarlett-alert kind="error">저장하지 못했습니다. 연결을 확인하고 다시 시도해주세요.</scarlett-alert></div></div></section>
+</main><footer class="section muted">© 2026 Scarlett · 작은 순간을 오래 기억해요.</footer></div>
+<script type="module">
+document.querySelector('scarlett-filter').addEventListener('filter-change',event=>{
+const category=event.detail.category;let count=0;
+document.querySelectorAll('scarlett-card').forEach(card=>{const visible=category==='전체'||card.getAttribute('category')===category;card.style.display=visible?'':'none';if(visible)count++});
+document.querySelector('#count').textContent=category+' 예시 '+count+'개';
+});
+</script></body></html>
+
